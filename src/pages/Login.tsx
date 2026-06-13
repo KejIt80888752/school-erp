@@ -3,6 +3,22 @@ import { useNavigate } from 'react-router-dom';
 import { Eye, EyeOff, Loader2, ArrowRight, GraduationCap } from 'lucide-react';
 import { useAuth } from '../App';
 
+/* ── The Raise badge ─────────────────────── */
+const TheRaiseBadge = () => (
+  <div style={{ display: 'inline-flex', alignItems: 'center', gap: 2, userSelect: 'none' }}>
+    <span style={{ fontSize: 9, fontWeight: 900, color: '#E8231E', letterSpacing: '0.5px', lineHeight: 1, alignSelf: 'flex-start', marginTop: 1 }}>THE</span>
+    <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+      {/* RAISE text */}
+      <span style={{ fontSize: 16, fontWeight: 900, color: '#2E6DB4', letterSpacing: '-0.5px', lineHeight: 1, fontFamily: 'system-ui, sans-serif' }}>RAISE</span>
+      {/* Red arrow SVG overlay */}
+      <svg viewBox="0 0 80 40" width="46" height="23" style={{ position: 'absolute', top: '-5px', left: '2px', pointerEvents: 'none' }}>
+        <path d="M8 32 Q30 8 52 4" stroke="#E8231E" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+        <polygon points="52,4 44,10 58,12" fill="#E8231E"/>
+      </svg>
+    </div>
+  </div>
+);
+
 /* ── Credentials (demo) ───────────────────── */
 const USERS = [
   { email: 'admin@srv.edu.in',     password: 'admin123',   role: 'Principal'  },
@@ -270,9 +286,15 @@ export default function Login() {
           </form>
         </div>
 
-        <p style={{ textAlign: 'center', fontSize: 11, color: '#334155', marginTop: 20 }}>
+        <p style={{ textAlign: 'center', fontSize: 11, color: '#334155', marginTop: 16 }}>
           © 2025 Sri Ramakrishna Vidyalaya, Chennai · All rights reserved
         </p>
+
+        {/* Powered by The Raise */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 7, marginTop: 14 }}>
+          <span style={{ fontSize: 11, color: '#475569' }}>Powered by</span>
+          <TheRaiseBadge />
+        </div>
       </div>
       <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
     </div>

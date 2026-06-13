@@ -14,6 +14,23 @@ import {
 } from 'recharts';
 import { useAuth } from '../App';
 
+/* ─── The Raise badge ───────────────────────────────────────── */
+const TheRaiseBadge = ({ size = 'sm' }: { size?: 'sm' | 'md' }) => {
+  const scale = size === 'md' ? 1.3 : 1;
+  return (
+    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 2, userSelect: 'none' }}>
+      <span style={{ fontSize: 9 * scale, fontWeight: 900, color: '#E8231E', letterSpacing: '0.5px', lineHeight: 1, alignSelf: 'flex-start', marginTop: 1 }}>THE</span>
+      <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+        <span style={{ fontSize: 16 * scale, fontWeight: 900, color: '#2E6DB4', letterSpacing: '-0.5px', lineHeight: 1, fontFamily: 'system-ui, sans-serif' }}>RAISE</span>
+        <svg viewBox="0 0 80 40" width={46 * scale} height={23 * scale} style={{ position: 'absolute', top: -5 * scale, left: 2, pointerEvents: 'none' }}>
+          <path d="M8 32 Q30 8 52 4" stroke="#E8231E" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
+          <polygon points="52,4 44,10 58,12" fill="#E8231E"/>
+        </svg>
+      </div>
+    </div>
+  );
+};
+
 /* ─── Types ──────────────────────────────────────────────────── */
 type SectionId =
   | 'overview' | 'students' | 'attendance' | 'calendar'
@@ -996,6 +1013,11 @@ export default function Dashboard() {
             style={{ color:'#64748b', fontSize:12, fontWeight:500, gap:8, padding:'8px 12px' }}>
             <LogOut size={14}/>Logout
           </button>
+          {/* Powered by The Raise */}
+          <div style={{ marginTop:12, paddingTop:10, borderTop:'1px solid rgba(255,255,255,0.05)', display:'flex', flexDirection:'column', alignItems:'center', gap:3 }}>
+            <span style={{ fontSize:9, color:'#334155', letterSpacing:'0.04em', textTransform:'uppercase' }}>Powered by</span>
+            <TheRaiseBadge size="sm" />
+          </div>
         </div>
       </aside>
 
