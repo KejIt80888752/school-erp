@@ -15,21 +15,33 @@ import {
 import { useAuth } from '../App';
 
 /* ─── The Raise badge ───────────────────────────────────────── */
-const TheRaiseBadge = ({ size = 'sm' }: { size?: 'sm' | 'md' }) => {
-  const scale = size === 'md' ? 1.3 : 1;
-  return (
-    <div style={{ display: 'inline-flex', alignItems: 'center', gap: 2, userSelect: 'none' }}>
-      <span style={{ fontSize: 9 * scale, fontWeight: 900, color: '#E8231E', letterSpacing: '0.5px', lineHeight: 1, alignSelf: 'flex-start', marginTop: 1 }}>THE</span>
-      <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
-        <span style={{ fontSize: 16 * scale, fontWeight: 900, color: '#2E6DB4', letterSpacing: '-0.5px', lineHeight: 1, fontFamily: 'system-ui, sans-serif' }}>RAISE</span>
-        <svg viewBox="0 0 80 40" width={46 * scale} height={23 * scale} style={{ position: 'absolute', top: -5 * scale, left: 2, pointerEvents: 'none' }}>
-          <path d="M8 32 Q30 8 52 4" stroke="#E8231E" strokeWidth="3.5" fill="none" strokeLinecap="round"/>
-          <polygon points="52,4 44,10 58,12" fill="#E8231E"/>
-        </svg>
-      </div>
-    </div>
-  );
-};
+const TheRaiseBadge = () => (
+  <div style={{
+    display: 'inline-block',
+    background: 'white',
+    borderRadius: 6,
+    padding: '3px 8px',
+    lineHeight: 1,
+    userSelect: 'none',
+    boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+  }}>
+    <svg viewBox="0 0 130 38" width="130" height="38" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
+      {/* THE — small red, top-left */}
+      <text x="2" y="12"
+        fontFamily="'Arial Black','Franklin Gothic Heavy',Impact,sans-serif"
+        fontSize="11" fontWeight="900" fill="#E8231E" letterSpacing="2">THE</text>
+      {/* RAISE — large blue */}
+      <text x="2" y="36"
+        fontFamily="'Arial Black','Franklin Gothic Heavy',Impact,sans-serif"
+        fontSize="28" fontWeight="900" fill="#2E6DB4" letterSpacing="-0.5">RAISE</text>
+      {/* Red curved arrow — sweeps from R/A area up to above I */}
+      <path d="M 20 32 C 42 10, 75 3, 95 1"
+        stroke="#E8231E" strokeWidth="4" fill="none" strokeLinecap="round"/>
+      {/* Arrowhead */}
+      <polygon points="95,1 82,9 94,17" fill="#E8231E"/>
+    </svg>
+  </div>
+);
 
 /* ─── Types ──────────────────────────────────────────────────── */
 type SectionId =
