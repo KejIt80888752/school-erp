@@ -189,9 +189,9 @@ const useCountUp = (target: number, dur = 1400) => {
 const card = (ex: React.CSSProperties = {}): React.CSSProperties => ({
   background: '#ffffff',
   border: '1px solid #e2e8f0',
-  borderRadius: 16,
-  padding: 20,
-  boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
+  borderRadius: 12,
+  padding: '12px 14px',
+  boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
   ...ex,
 });
 
@@ -202,12 +202,12 @@ const bdg = (c: string): React.CSSProperties => ({
 });
 
 const TH: React.CSSProperties = {
-  padding: '10px 16px', fontSize: 10, fontWeight: 700, color: '#94a3b8',
+  padding: '7px 12px', fontSize: 10, fontWeight: 700, color: '#94a3b8',
   textTransform: 'uppercase', letterSpacing: '0.07em', textAlign: 'left',
   borderBottom: '1px solid #f1f5f9', whiteSpace: 'nowrap',
 };
 const TD = (ex: React.CSSProperties = {}): React.CSSProperties => ({
-  padding: '11px 16px', fontSize: 13, color: '#64748b', verticalAlign: 'middle', ...ex,
+  padding: '8px 12px', fontSize: 12, color: '#64748b', verticalAlign: 'middle', ...ex,
 });
 
 const ttStyle = {
@@ -225,9 +225,9 @@ const StatCard = ({ icon: Icon, label, value, suffix = '', sub, color, trend, up
   return (
     <div className="srv-stat" style={card({ position: 'relative', overflow: 'hidden', cursor: 'default' })}>
       <div style={{ position: 'absolute', top: -20, right: -20, width: 90, height: 90, borderRadius: '50%', background: `radial-gradient(circle,${color}18,transparent 70%)`, pointerEvents: 'none' }} />
-      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 14 }}>
-        <div style={{ width: 44, height: 44, borderRadius: 12, background: `${color}18`, border: `1px solid ${color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <Icon style={{ width: 20, height: 20, color }} />
+      <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 8 }}>
+        <div style={{ width: 36, height: 36, borderRadius: 10, background: `${color}18`, border: `1px solid ${color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <Icon style={{ width: 17, height: 17, color }} />
         </div>
         {trend && (
           <span style={{ fontSize: 11, fontWeight: 700, color: up ? '#10b981' : '#f43f5e', background: up ? '#dcfce7' : '#fee2e2', padding: '3px 8px', borderRadius: 999 }}>
@@ -235,23 +235,23 @@ const StatCard = ({ icon: Icon, label, value, suffix = '', sub, color, trend, up
           </span>
         )}
       </div>
-      <div style={{ fontSize: 11, color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 4 }}>{label}</div>
-      <div style={{ fontSize: 28, fontWeight: 800, color: '#0f172a', lineHeight: 1 }}>{n.toLocaleString()}{suffix}</div>
-      {sub && <div style={{ fontSize: 12, color: '#94a3b8', marginTop: 4 }}>{sub}</div>}
+      <div style={{ fontSize: 10, color: '#94a3b8', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.07em', marginBottom: 2 }}>{label}</div>
+      <div style={{ fontSize: 22, fontWeight: 800, color: '#0f172a', lineHeight: 1 }}>{n.toLocaleString()}{suffix}</div>
+      {sub && <div style={{ fontSize: 11, color: '#94a3b8', marginTop: 2 }}>{sub}</div>}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 3, background: `linear-gradient(90deg,${color},${color}44)`, borderRadius: '0 0 14px 14px' }} />
     </div>
   );
 };
 
 const SectionHeader = ({ title, sub, color, icon: Icon }: { title: string; sub: string; color: string; icon: React.ElementType }) => (
-  <div style={{ marginBottom: 24 }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-      <div style={{ width: 44, height: 44, borderRadius: 12, background: `${color}18`, border: `1px solid ${color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <Icon style={{ width: 20, height: 20, color }} />
+  <div style={{ marginBottom: 6 }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+      <div style={{ width: 36, height: 36, borderRadius: 10, background: `${color}18`, border: `1px solid ${color}30`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+        <Icon style={{ width: 17, height: 17, color }} />
       </div>
       <div>
-        <h2 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: '#0f172a' }}>{title}</h2>
-        <p style={{ margin: 0, fontSize: 12, color: '#94a3b8' }}>{sub}</p>
+        <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700, color: '#0f172a' }}>{title}</h2>
+        <p style={{ margin: 0, fontSize: 11, color: '#94a3b8' }}>{sub}</p>
       </div>
     </div>
   </div>
@@ -272,12 +272,12 @@ const OverviewSection = () => {
   ];
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       {/* Hero banner */}
       <div style={{ ...card({ padding: 0, overflow: 'hidden' }), background: 'linear-gradient(135deg,#f5f3ff,#eff6ff,#f0fdf4)', border: '1px solid #e2e8f0' }}>
         <div style={{ padding: '24px 28px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 8 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div style={{ width: 60, height: 60, borderRadius: 14, background: 'linear-gradient(135deg,#8b5cf6,#3b82f6)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 20, fontWeight: 900, color: 'white', flexShrink: 0, boxShadow: '0 6px 20px rgba(139,92,246,0.35)' }}>SRV</div>
               <div>
                 <h1 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: '#0f172a' }}>{SCHOOL.name}</h1>
@@ -310,7 +310,7 @@ const OverviewSection = () => {
       {/* Charts */}
       <div className="g2">
         <div style={card()}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
             <div>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a' }}>Monthly Attendance Trend</div>
               <div style={{ fontSize: 11, color: '#94a3b8' }}>Jan – Jun 2025</div>
@@ -334,7 +334,7 @@ const OverviewSection = () => {
           </ResponsiveContainer>
         </div>
         <div style={card()}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 16 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
             <div>
               <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a' }}>Fee Collection (₹L)</div>
               <div style={{ fontSize: 11, color: '#94a3b8' }}>Monthly trend</div>
@@ -361,7 +361,7 @@ const OverviewSection = () => {
       {/* Bottom row */}
       <div className="g2">
         <div style={card()}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 14 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
             <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a' }}>Recent Announcements</div>
             <Bell size={15} color="#ec4899" />
           </div>
@@ -376,9 +376,9 @@ const OverviewSection = () => {
             </div>
           ))}
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <div style={{ ...card(), flex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 12 }}>Today's Schedule</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Today's Schedule</div>
             {[['8:30 AM', 'School Assembly', '#8b5cf6'], ['9:00 AM', 'Classes Begin', '#3b82f6'], ['12:30 PM', 'Lunch Break', '#f59e0b'], ['4:30 PM', 'Dispersal', '#10b981']].map(([t, e, c]) => (
               <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8 }}>
                 <div style={{ width: 7, height: 7, borderRadius: '50%', background: c, flexShrink: 0, boxShadow: `0 0 5px ${c}` }} />
@@ -388,7 +388,7 @@ const OverviewSection = () => {
             ))}
           </div>
           <div style={{ ...card(), flex: 1 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 12 }}>Upcoming Holidays</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Upcoming Holidays</div>
             {HOLIDAYS.slice(5, 9).map(h => (
               <div key={h.name} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 9 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -410,7 +410,7 @@ const StudentsSection = () => {
   const girls = CLASSES.reduce((a, c) => a + c.girls, 0);
   const total = boys + girls;
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <SectionHeader title="Student Management" sub="Class-wise data, demographics & admissions" color="#3b82f6" icon={GraduationCap} />
       <div className="g4">
         {[
@@ -421,7 +421,7 @@ const StudentsSection = () => {
         ].map(k => <StatCard key={k.label} {...k} />)}
       </div>
       <div style={card()}>
-        <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 12 }}>Gender Distribution</div>
+        <div style={{ fontSize: 13, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Gender Distribution</div>
         <div style={{ height: 14, borderRadius: 999, overflow: 'hidden', display: 'flex' }}>
           <div className="srv-bar" style={{ height: '100%', width: `${Math.round(boys / total * 100)}%`, background: 'linear-gradient(90deg,#3b82f6,#8b5cf6)', borderRadius: '999px 0 0 999px' }} />
           <div className="srv-bar" style={{ height: '100%', width: `${Math.round(girls / total * 100)}%`, background: 'linear-gradient(90deg,#ec4899,#db2777)', borderRadius: '0 999px 999px 0' }} />
@@ -432,7 +432,7 @@ const StudentsSection = () => {
         </div>
       </div>
       <div style={card({ padding: 0, overflow: 'hidden' })}>
-        <div style={{ padding: '14px 20px', borderBottom: '1px solid #f1f5f9', fontSize: 14, fontWeight: 700, color: '#0f172a' }}>Class-wise Strength</div>
+        <div style={{ padding: '10px 14px', borderBottom: '1px solid #f1f5f9', fontSize: 13, fontWeight: 700, color: '#0f172a' }}>Class-wise Strength</div>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead><tr>{['Grade', 'Sections', 'Boys', 'Girls', 'Total', 'Attendance', 'Status'].map(h => <th key={h} style={TH}>{h}</th>)}</tr></thead>
@@ -467,7 +467,7 @@ const AttendanceSection = () => {
   const hc = (v: number) => v === 0 ? '#f8fafc' : v >= 95 ? '#10b981' : v >= 90 ? '#34d399' : v >= 85 ? '#f59e0b' : v >= 80 ? '#f97316' : '#f43f5e';
   const tc = (v: number) => v === 0 ? '#cbd5e1' : '#ffffff';
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <SectionHeader title="Attendance Tracker" sub="Daily, monthly & class-wise attendance monitoring" color="#10b981" icon={UserCheck} />
       <div className="g4">
         {[
@@ -478,7 +478,7 @@ const AttendanceSection = () => {
         ].map(k => <StatCard key={k.label} {...k} />)}
       </div>
       <div style={card()}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 14, flexWrap: 'wrap', gap: 8 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, flexWrap: 'wrap', gap: 8 }}>
           <div>
             <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a' }}>June 2025 — Attendance Heatmap</div>
             <div style={{ fontSize: 11, color: '#94a3b8' }}>Each cell = daily attendance %</div>
@@ -509,7 +509,7 @@ const AttendanceSection = () => {
         </div>
       </div>
       <div style={card()}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 14 }}>Today's Class-wise Attendance</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Today's Class-wise Attendance</div>
         <div className="g4" style={{ gap: 10 }}>
           {CLASSES.map(c => {
             const color = c.att >= 95 ? '#10b981' : c.att >= 90 ? '#f59e0b' : '#f43f5e';
@@ -530,7 +530,7 @@ const AttendanceSection = () => {
 const CalendarSection = () => {
   const evColor: Record<string, string> = { holiday: '#f43f5e', exam: '#8b5cf6', event: '#3b82f6', ptm: '#f59e0b' };
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <SectionHeader title="School Calendar" sub="Events, holidays, exams & schedules — June 2025" color="#f59e0b" icon={CalendarDays} />
       <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
         {[['Holiday', '#f43f5e'], ['Exam', '#8b5cf6'], ['Event', '#3b82f6'], ['PTM', '#f59e0b'], ['Today', '#8b5cf6']].map(([l, c]) => (
@@ -542,7 +542,7 @@ const CalendarSection = () => {
       </div>
       <div className="g2" style={{ alignItems: 'start' }}>
         <div style={card()}>
-          <div style={{ textAlign: 'center', fontSize: 16, fontWeight: 700, color: '#0f172a', marginBottom: 16 }}>June 2025</div>
+          <div style={{ textAlign: 'center', fontSize: 16, fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>June 2025</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 2 }}>
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(d => (
               <div key={d} style={{ textAlign: 'center', fontSize: 10, fontWeight: 700, color: '#94a3b8', padding: '6px 0' }}>{d}</div>
@@ -566,9 +566,9 @@ const CalendarSection = () => {
             })}
           </div>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           <div style={card()}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 12 }}>Holiday List 2025</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Holiday List 2025</div>
             {HOLIDAYS.map(h => (
               <div key={h.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '7px 10px', borderRadius: 8, background: `${h.c}0d`, border: `1px solid ${h.c}20`, marginBottom: 6 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
@@ -583,7 +583,7 @@ const CalendarSection = () => {
             ))}
           </div>
           <div style={card()}>
-            <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 12 }}>Upcoming Events</div>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Upcoming Events</div>
             {[['🏃', 'Sports Meet', 'Jun 15'], ['🧘', 'Yoga Day', 'Jun 21'], ['📝', 'Quarterly Exams', 'Jun 20'], ['👨‍👩‍👧', 'PTM (Class 9-12)', 'Jun 21'], ['📅', 'Term End', 'Jun 28']].map(([icon, name, date]) => (
               <div key={name} style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 10 }}>
                 <span style={{ fontSize: 18 }}>{icon}</span>
@@ -607,7 +607,7 @@ const AnnouncementsSection = () => {
     fee: { label: 'Finance', color: '#14b8a6' }, event: { label: 'Event', color: '#3b82f6' }, achievement: { label: 'Achievement', color: '#10b981' },
   };
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <SectionHeader title="Announcements & Circulars" sub="Notices, events, achievements & important updates" color="#ec4899" icon={Bell} />
       <div className="g3">
         {[{ icon: FileText, label: 'Total Circulars', value: 24, color: '#ec4899' }, { icon: AlertCircle, label: 'Urgent Notices', value: 3, color: '#f43f5e' }, { icon: Award, label: 'Achievements', value: 7, color: '#10b981' }].map(k => <StatCard key={k.label} {...k} />)}
@@ -618,7 +618,7 @@ const AnnouncementsSection = () => {
           <div key={a.id} className="srv-fade" style={{ ...card({ padding: 0, overflow: 'hidden' }), animationDelay: `${i * 60}ms` }}>
             <div style={{ display: 'flex' }}>
               <div style={{ width: 4, flexShrink: 0, background: `linear-gradient(180deg,${a.color},${a.color}55)` }} />
-              <div style={{ padding: '14px 18px', flex: 1 }}>
+              <div style={{ padding: '8px 12px', flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 10, flexWrap: 'wrap', marginBottom: 8 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                     <span style={{ fontSize: 22 }}>{a.icon}</span>
@@ -643,7 +643,7 @@ const FeesSection = () => {
   const totS = FEES.reduce((a, f) => a + f.total, 0), totP = FEES.reduce((a, f) => a + f.paid, 0), totPend = FEES.reduce((a, f) => a + f.pending, 0);
   const pct = Math.round(totP / totS * 100);
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <SectionHeader title="Fees & Finance" sub="Collection status, pending dues & monthly trends" color="#14b8a6" icon={DollarSign} />
       <div className="g4">
         {[
@@ -666,7 +666,7 @@ const FeesSection = () => {
         </div>
       </div>
       <div style={card({ padding: 0, overflow: 'hidden' })}>
-        <div style={{ padding: '14px 20px', borderBottom: '1px solid #f1f5f9', fontSize: 14, fontWeight: 700, color: '#0f172a' }}>Class-wise Fee Status</div>
+        <div style={{ padding: '10px 14px', borderBottom: '1px solid #f1f5f9', fontSize: 13, fontWeight: 700, color: '#0f172a' }}>Class-wise Fee Status</div>
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead><tr>{['Class Group', 'Total', 'Paid', 'Pending', 'Collection %', 'Amount'].map(h => <th key={h} style={TH}>{h}</th>)}</tr></thead>
@@ -696,7 +696,7 @@ const FeesSection = () => {
         </div>
       </div>
       <div style={card()}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 14 }}>Monthly Collection Trend (₹L)</div>
+        <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Monthly Collection Trend (₹L)</div>
         <ResponsiveContainer width="100%" height={180}>
           <BarChart data={FEE_MONTHLY} barSize={32}>
             <defs><linearGradient id="fg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#14b8a6" /><stop offset="100%" stopColor="#0d9488" /></linearGradient></defs>
@@ -715,7 +715,7 @@ const FeesSection = () => {
 const StaffSection = () => {
   const totS = STAFF.reduce((a, d) => a + d.count, 0), totP = STAFF.reduce((a, d) => a + d.present, 0);
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <SectionHeader title="Staff Management" sub="Department-wise staff, attendance & HOD details" color="#6366f1" icon={Users} />
       <div className="g4">
         {[
@@ -753,7 +753,7 @@ const StaffSection = () => {
 };
 
 const LibrarySection = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
     <SectionHeader title="Library Management" sub="Books inventory, issued & reading statistics" color="#f97316" icon={BookOpen} />
     <div className="g4">
       {[
@@ -765,8 +765,8 @@ const LibrarySection = () => (
     </div>
     <div className="g2">
       <div style={card()}>
-        <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 14 }}>Books by Category</div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Books by Category</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
           <PieChart width={160} height={160}>
             <Pie data={LIB_CATS} cx={75} cy={75} innerRadius={45} outerRadius={72} dataKey="count" stroke="none">
               {LIB_CATS.map((_, i) => <Cell key={i} fill={LIB_CATS[i].color} />)}
@@ -812,7 +812,7 @@ const LibrarySection = () => (
 const TransportSection = () => {
   const totS = BUSES.reduce((a, r) => a + r.students, 0), onTime = BUSES.filter(r => r.status === 'On Time').length;
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
       <SectionHeader title="Transport Management" sub="Bus routes, drivers, student counts & live status" color="#0ea5e9" icon={Bus} />
       <div className="g4">
         {[
@@ -848,7 +848,7 @@ const TransportSection = () => {
 };
 
 const ExamsSection = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
     <SectionHeader title="Examinations" sub="Upcoming schedule, results & top performers" color="#f43f5e" icon={FileText} />
     <div className="g4">
       {[
@@ -859,7 +859,7 @@ const ExamsSection = () => (
       ].map(k => <StatCard key={k.label} {...k} />)}
     </div>
     <div style={card({ padding: 0, overflow: 'hidden' })}>
-      <div style={{ padding: '14px 20px', borderBottom: '1px solid #f1f5f9', fontSize: 14, fontWeight: 700, color: '#0f172a' }}>Quarterly Examination Schedule — June 2025</div>
+      <div style={{ padding: '10px 14px', borderBottom: '1px solid #f1f5f9', fontSize: 13, fontWeight: 700, color: '#0f172a' }}>Quarterly Examination Schedule — June 2025</div>
       <div style={{ overflowX: 'auto' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
           <thead><tr>{['Subject', 'Class', 'Date', 'Day', 'Time', 'Hall', 'Duration'].map(h => <th key={h} style={TH}>{h}</th>)}</tr></thead>
@@ -880,7 +880,7 @@ const ExamsSection = () => (
       </div>
     </div>
     <div style={card()}>
-      <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 14 }}>Previous Term — Top Performers</div>
+      <div style={{ fontSize: 14, fontWeight: 700, color: '#0f172a', marginBottom: 6 }}>Previous Term — Top Performers</div>
       <div className="g4" style={{ gap: 12 }}>
         {[['🥇', 'Kavya S.', 'Class XII', '98.4%', '#f59e0b'], ['🥈', 'Arjun R.', 'Class X', '97.8%', '#94a3b8'], ['🥉', 'Priya M.', 'Class XII', '97.2%', '#f97316'], ['⭐', 'Rohan T.', 'Class XI', '96.6%', '#10b981']].map(([icon, name, cls, score, c]) => (
           <div key={name as string} style={{ padding: 14, borderRadius: 12, textAlign: 'center', background: `${c as string}0d`, border: `1px solid ${c as string}20` }}>
@@ -944,9 +944,9 @@ export default function Dashboard() {
         .srv-nav   { display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;transition:all .15s;background:transparent;border:1px solid transparent;width:100%;text-align:left; }
         .srv-nav:hover { background:#f8fafc; }
 
-        .g2 { display:grid; gap:20px; grid-template-columns:1fr; }
-        .g3 { display:grid; gap:16px; grid-template-columns:1fr; }
-        .g4 { display:grid; gap:16px; grid-template-columns:1fr; }
+        .g2 { display:grid; gap:10px; grid-template-columns:1fr; }
+        .g3 { display:grid; gap:8px;  grid-template-columns:1fr; }
+        .g4 { display:grid; gap:8px;  grid-template-columns:1fr; }
 
         @media(min-width:600px)  { .g2{grid-template-columns:1fr 1fr;} .g3{grid-template-columns:1fr 1fr;} .g4{grid-template-columns:1fr 1fr;} }
         @media(min-width:1024px) { .g3{grid-template-columns:repeat(3,1fr);} .g4{grid-template-columns:repeat(4,1fr);} }
@@ -984,7 +984,7 @@ export default function Dashboard() {
         </div>
 
         {/* Nav */}
-        <nav style={{ flex: 1, padding: '10px 8px', display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <nav style={{ padding: '10px 8px', display: 'flex', flexDirection: 'column', gap: 2 }}>
           {NAV.map(item => {
             const isActive = active === item.id, Icon = item.icon;
             return (
@@ -1007,7 +1007,7 @@ export default function Dashboard() {
         </nav>
 
         {/* Bottom */}
-        <div style={{ padding: '12px 16px', borderTop: '1px solid #f1f5f9' }}>
+        <div style={{ padding: '12px 16px', borderTop: '1px solid #f1f5f9', marginTop: 'auto' }}>
           <div style={{ fontSize: 11, color: '#94a3b8', marginBottom: 8 }}>Academic Year 2025–26</div>
           <button onClick={() => { logout(); navigate('/login'); }} className="srv-nav"
             style={{ color: '#64748b', fontSize: 12, fontWeight: 500, gap: 8, padding: '8px 12px' }}>
@@ -1055,7 +1055,7 @@ export default function Dashboard() {
         </header>
 
         {/* Content */}
-        <main key={active} className="srv-fade" style={{ flex: 1, padding: '22px 18px 40px', overflowY: 'auto' }}>
+        <main key={active} className="srv-fade" style={{ flex: 1, padding: '12px 14px 24px', overflowY: 'auto' }}>
           {renderSection()}
         </main>
       </div>
