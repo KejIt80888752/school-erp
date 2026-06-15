@@ -15,28 +15,11 @@ import { useAuth } from '../App';
 
 /* ─── The Raise badge ───────────────────────────────────────── */
 const TheRaiseBadge = () => (
-  <div style={{
-    display: 'inline-block',
-    background: 'white',
-    borderRadius: 6,
-    padding: '3px 8px',
-    lineHeight: 1,
-    userSelect: 'none',
-    boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
-    border: '1px solid #e2e8f0',
-  }}>
-    <svg viewBox="0 0 130 38" width="130" height="38" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block' }}>
-      <text x="2" y="12"
-        fontFamily="'Arial Black','Franklin Gothic Heavy',Impact,sans-serif"
-        fontSize="11" fontWeight="900" fill="#E8231E" letterSpacing="2">THE</text>
-      <text x="2" y="36"
-        fontFamily="'Arial Black','Franklin Gothic Heavy',Impact,sans-serif"
-        fontSize="28" fontWeight="900" fill="#2E6DB4" letterSpacing="-0.5">RAISE</text>
-      <path d="M 20 32 C 42 10, 75 3, 95 1"
-        stroke="#E8231E" strokeWidth="4" fill="none" strokeLinecap="round"/>
-      <polygon points="95,1 82,9 94,17" fill="#E8231E"/>
-    </svg>
-  </div>
+  <img
+    src="/school-erp/the-raise-logo.png"
+    alt="The Raise"
+    style={{ height: 32, width: 'auto', display: 'block', userSelect: 'none' }}
+  />
 );
 
 /* ─── Types ──────────────────────────────────────────────────── */
