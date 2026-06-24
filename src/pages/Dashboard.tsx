@@ -6,6 +6,9 @@ import {
   TrendingUp, Award, CheckCircle2, AlertCircle, Star,
   Menu, X, LogOut, Search, ChevronRight, Activity,
   MapPin, Clock, Building2, Phone, BookMarked, Shield, TrendingDown,
+  MessageSquare, Receipt, Briefcase, Layers, QrCode, Smartphone,
+  Wifi, CreditCard, Package, UserPlus, Video, Brain,
+  Fingerprint, IdCard, Wallet, ClipboardList, BarChart2, Send,
 } from 'lucide-react';
 import {
   AreaChart, Area, BarChart, Bar, XAxis, YAxis,
@@ -20,18 +23,23 @@ const TheRaiseBadge = () => (
 );
 
 /* ─── Nav config ─────────────────────────────────────────────── */
-type SectionId = 'overview'|'students'|'attendance'|'calendar'|'announcements'|'fees'|'staff'|'library'|'transport'|'exams';
+type SectionId = 'overview'|'students'|'attendance'|'calendar'|'announcements'|'fees'|'staff'|'library'|'transport'|'exams'|'communication'|'expenses'|'hrpayroll'|'admission'|'platform';
 const NAV = [
-  { id:'overview',      label:'Overview',       icon:Home,          color:'#818cf8', bg:'rgba(129,140,248,0.15)' },
-  { id:'students',      label:'Students',       icon:GraduationCap, color:'#60a5fa', bg:'rgba(96,165,250,0.15)'  },
-  { id:'attendance',    label:'Attendance',     icon:UserCheck,     color:'#34d399', bg:'rgba(52,211,153,0.15)'  },
-  { id:'calendar',      label:'Calendar',       icon:CalendarDays,  color:'#fbbf24', bg:'rgba(251,191,36,0.15)'  },
-  { id:'announcements', label:'Announcements',  icon:Bell,          color:'#f472b6', bg:'rgba(244,114,182,0.15)' },
-  { id:'fees',          label:'Fees & Finance', icon:DollarSign,    color:'#2dd4bf', bg:'rgba(45,212,191,0.15)'  },
-  { id:'staff',         label:'Staff',          icon:Users,         color:'#a78bfa', bg:'rgba(167,139,250,0.15)' },
-  { id:'library',       label:'Library',        icon:BookOpen,      color:'#fb923c', bg:'rgba(251,146,60,0.15)'  },
-  { id:'transport',     label:'Transport',      icon:Bus,           color:'#38bdf8', bg:'rgba(56,189,248,0.15)'  },
-  { id:'exams',         label:'Examinations',   icon:FileText,      color:'#f87171', bg:'rgba(248,113,113,0.15)' },
+  { id:'overview',      label:'Overview',          icon:Home,           color:'#818cf8', bg:'rgba(129,140,248,0.15)' },
+  { id:'students',      label:'Students',          icon:GraduationCap,  color:'#60a5fa', bg:'rgba(96,165,250,0.15)'  },
+  { id:'admission',     label:'Admission',         icon:UserPlus,       color:'#a78bfa', bg:'rgba(167,139,250,0.15)' },
+  { id:'attendance',    label:'Attendance',        icon:UserCheck,      color:'#34d399', bg:'rgba(52,211,153,0.15)'  },
+  { id:'calendar',      label:'Calendar',          icon:CalendarDays,   color:'#fbbf24', bg:'rgba(251,191,36,0.15)'  },
+  { id:'communication', label:'Communication',     icon:MessageSquare,  color:'#f472b6', bg:'rgba(244,114,182,0.15)' },
+  { id:'announcements', label:'Notice & Homework', icon:Bell,           color:'#fb923c', bg:'rgba(251,146,60,0.15)'  },
+  { id:'fees',          label:'Fees & Finance',    icon:DollarSign,     color:'#2dd4bf', bg:'rgba(45,212,191,0.15)'  },
+  { id:'expenses',      label:'Expenses & Budget', icon:Receipt,        color:'#f87171', bg:'rgba(248,113,113,0.15)' },
+  { id:'staff',         label:'Staff',             icon:Users,          color:'#a78bfa', bg:'rgba(167,139,250,0.15)' },
+  { id:'hrpayroll',     label:'HR & Payroll',      icon:Briefcase,      color:'#34d399', bg:'rgba(52,211,153,0.15)'  },
+  { id:'library',       label:'Library',           icon:BookOpen,       color:'#fb923c', bg:'rgba(251,146,60,0.15)'  },
+  { id:'transport',     label:'Transport',         icon:Bus,            color:'#38bdf8', bg:'rgba(56,189,248,0.15)'  },
+  { id:'exams',         label:'Examinations',      icon:FileText,       color:'#f87171', bg:'rgba(248,113,113,0.15)' },
+  { id:'platform',      label:'Platform Features', icon:Layers,         color:'#fbbf24', bg:'rgba(251,191,36,0.15)'  },
 ] as const;
 
 /* ─── Mock data ──────────────────────────────────────────────── */
@@ -745,6 +753,483 @@ const Exams = () => (
   </div>
 );
 
+/* ══════════════════ ADMISSION ═══════════════════════════════ */
+const Admission = () => {
+  const admissions=[
+    {name:'Arjun Sharma',   class:'Class I', parent:'R. Sharma',   phone:'98400-11111',status:'Approved', date:'Jun 10',c:'#34d399'},
+    {name:'Priya Nair',     class:'LKG',     parent:'V. Nair',     phone:'98400-22222',status:'Pending',  date:'Jun 12',c:'#fbbf24'},
+    {name:'Karthik M.',     class:'Class VI',parent:'M. Kumar',    phone:'98400-33333',status:'Approved', date:'Jun 13',c:'#34d399'},
+    {name:'Sneha Reddy',    class:'Class IX',parent:'P. Reddy',    phone:'98400-44444',status:'Pending',  date:'Jun 14',c:'#fbbf24'},
+    {name:'Rohan Das',      class:'UKG',     parent:'S. Das',      phone:'98400-55555',status:'Rejected', date:'Jun 9', c:'#f87171'},
+    {name:'Ananya Pillai',  class:'Class IV',parent:'K. Pillai',   phone:'98400-66666',status:'Approved', date:'Jun 8', c:'#34d399'},
+  ];
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:12}}>
+      <SH title="Admission Management" sub="Online form, QR code, WhatsApp link & auto account creation" color="#a78bfa" icon={UserPlus}/>
+      <div className="g4">
+        {[{icon:UserPlus,label:'Total Applications',value:87,sub:'2025–26 batch',grad:['#7c3aed','#a78bfa'],trend:'12%',up:true},{icon:CheckCircle2,label:'Approved',value:61,sub:'Accounts created',grad:['#10b981','#34d399']},{icon:Clock,label:'Pending Review',value:18,sub:'Awaiting approval',grad:['#f59e0b','#fbbf24']},{icon:AlertCircle,label:'Rejected',value:8,sub:'Docs incomplete',grad:['#f43f5e','#f87171']}].map(k=><KPI key={k.label} {...k}/>)}
+      </div>
+      {/* Share methods */}
+      <div className="g3">
+        {[
+          {icon:QrCode,    label:'QR Code Admission',     desc:'Scan & fill form instantly — share at school gate or notice board',        color:'#818cf8',action:'Download QR'},
+          {icon:Smartphone,label:'WhatsApp Link',         desc:'Share admission form link directly on parent WhatsApp groups',              color:'#34d399',action:'Copy Link'},
+          {icon:Send,      label:'Email / SMS Invite',    desc:'Send individual admission link via email or SMS to specific parents',       color:'#60a5fa',action:'Send Now'},
+        ].map(m=>(
+          <div key={m.label} style={C({padding:'14px 16px',textAlign:'center'})}>
+            <div style={{width:44,height:44,borderRadius:12,background:`${m.color}18`,border:`1px solid ${m.color}25`,display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 8px'}}>
+              <m.icon style={{width:20,height:20,color:m.color}}/>
+            </div>
+            <div style={{fontSize:13,fontWeight:700,color:'#0f172a',marginBottom:4}}>{m.label}</div>
+            <div style={{fontSize:11,color:'#94a3b8',marginBottom:10,lineHeight:1.5}}>{m.desc}</div>
+            <button style={{background:`linear-gradient(135deg,${m.color},${m.color}cc)`,color:'white',border:'none',borderRadius:8,padding:'6px 14px',fontSize:11,fontWeight:700,cursor:'pointer'}}>{m.action}</button>
+          </div>
+        ))}
+      </div>
+      {/* Admission list */}
+      <div style={C({padding:0,overflow:'hidden'})}>
+        <div style={{padding:'10px 14px',borderBottom:'1px solid #f1f5f9',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+          <span style={{fontSize:13,fontWeight:700,color:'#0f172a'}}>Recent Applications</span>
+          <Bdg c="#a78bfa">Auto-creates parent + student account on approval</Bdg>
+        </div>
+        <div style={{overflowX:'auto'}}>
+          <table style={{width:'100%',borderCollapse:'collapse'}}>
+            <thead><tr>{['Student Name','Class','Parent','Phone','Date','Status','Action'].map(h=><th key={h} style={TH}>{h}</th>)}</tr></thead>
+            <tbody>
+              {admissions.map((a,i)=>(
+                <tr key={a.name} className="srv-tr" style={{background:i%2===0?'transparent':'#fafbff'}}>
+                  <td style={TD({fontWeight:700,color:'#0f172a'})}>{a.name}</td>
+                  <td style={TD()}><Bdg c="#60a5fa">{a.class}</Bdg></td>
+                  <td style={TD()}>{a.parent}</td>
+                  <td style={TD({fontFamily:'monospace'})}>{a.phone}</td>
+                  <td style={TD({color:'#94a3b8'})}>{a.date}</td>
+                  <td style={TD()}><Bdg c={a.c}>{a.status}</Bdg></td>
+                  <td style={TD()}>
+                    {a.status==='Pending' && <button style={{background:'linear-gradient(135deg,#10b981,#34d399)',color:'white',border:'none',borderRadius:6,padding:'4px 10px',fontSize:10,fontWeight:700,cursor:'pointer'}}>Approve</button>}
+                    {a.status==='Approved' && <span style={{fontSize:11,color:'#34d399',fontWeight:600}}>✓ Account Created</span>}
+                    {a.status==='Rejected' && <span style={{fontSize:11,color:'#f87171',fontWeight:600}}>✗ Rejected</span>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {/* Settings */}
+      <div className="g2">
+        <div style={C({padding:'14px 16px'})}>
+          <div style={{fontSize:13,fontWeight:700,color:'#0f172a',marginBottom:10}}>Admission Settings</div>
+          {[['Academic Year','2025–26','#818cf8'],['Application Fee','₹500 (One-time)','#2dd4bf'],['Open Classes','LKG to Class IX','#34d399'],['Last Date','July 31, 2025','#f87171'],['Required Docs','Birth Cert, Transfer Cert, Photos','#fbbf24']].map(([k,v,c])=>(
+            <div key={k as string} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'7px 0',borderBottom:'1px solid #f8fafc'}}>
+              <span style={{fontSize:12,color:'#64748b'}}>{k}</span><span style={{fontSize:12,fontWeight:600,color:c as string}}>{v}</span>
+            </div>
+          ))}
+        </div>
+        <div style={C({padding:'14px 16px'})}>
+          <div style={{fontSize:13,fontWeight:700,color:'#0f172a',marginBottom:10}}>Documents Required</div>
+          {['Birth Certificate (Original + Copy)','Previous School Transfer Certificate','Passport Size Photos (4 nos.)','Aadhaar Card (Student + Parent)','Caste Certificate (if applicable)','Medical Fitness Certificate'].map((d,i)=>(
+            <div key={i} style={{display:'flex',gap:8,marginBottom:7}}>
+              <CheckCircle2 size={13} color="#34d399" style={{flexShrink:0,marginTop:1}}/>
+              <span style={{fontSize:11,color:'#475569'}}>{d}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ══════════════════ COMMUNICATION ═══════════════════════════ */
+const Communication = () => {
+  const msgs=[
+    {to:'All Parents',  subject:'Sports Day Reminder',       channel:'WhatsApp',status:'Delivered',count:847,date:'Jun 13'},
+    {to:'Class X',      subject:'Exam Timetable Released',   channel:'SMS',     status:'Delivered',count:85, date:'Jun 12'},
+    {to:'All Staff',    subject:'Staff Meeting — June 15',   channel:'In-App',  status:'Delivered',count:68, date:'Jun 11'},
+    {to:'Defaulters',   subject:'Fee Due Reminder',          channel:'Email',   status:'Delivered',count:74, date:'Jun 10'},
+    {to:'Parents LKG',  subject:'PTM Schedule',              channel:'WhatsApp',status:'Sent',     count:45, date:'Jun 9'},
+  ];
+  const hw=[
+    {class:'Class X',   subject:'Mathematics',  title:'Chapter 5 Exercise',   due:'Jun 16',status:'15 Pending',c:'#f87171'},
+    {class:'Class IX',  subject:'Science',      title:'Lab Report – Osmosis',  due:'Jun 17',status:'Completed',c:'#34d399'},
+    {class:'Class VIII',subject:'English',      title:'Essay Writing',         due:'Jun 18',status:'8 Pending', c:'#fbbf24'},
+    {class:'Class VII', subject:'History',      title:'Map Work Chapter 3',    due:'Jun 19',status:'Completed',c:'#34d399'},
+  ];
+  const channels=[
+    {icon:Smartphone,label:'WhatsApp',   cost:'₹0.30/msg',  color:'#34d399',free:false,info:'Rich media, read receipts'},
+    {icon:MessageSquare,label:'SMS',     cost:'₹0.15/msg',  color:'#60a5fa',free:false,info:'Universal reach'},
+    {icon:Send,       label:'Email',     cost:'₹0.05/msg',  color:'#f472b6',free:false,info:'Attachments supported'},
+    {icon:Bell,       label:'In-App',    cost:'Free',        color:'#818cf8',free:true, info:'Instant push notification'},
+  ];
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:12}}>
+      <SH title="Communication Hub" sub="SMS · WhatsApp · Email · In-App notifications" color="#f472b6" icon={MessageSquare}/>
+      <div className="g4">
+        {[{icon:Send,label:'Msgs This Month',value:2847,sub:'All channels combined',grad:['#ec4899','#f472b6'],trend:'18%',up:true},{icon:Smartphone,label:'WhatsApp Sent',value:1240,sub:'₹372 spent',grad:['#10b981','#34d399']},{icon:MessageSquare,label:'SMS Sent',value:890,sub:'₹133 spent',grad:['#3b82f6','#60a5fa']},{icon:Bell,label:'In-App (Free)',value:717,sub:'No cost',grad:['#818cf8','#a78bfa']}].map(k=><KPI key={k.label} {...k}/>)}
+      </div>
+      {/* Channels */}
+      <div className="g4">
+        {channels.map(ch=>(
+          <div key={ch.label} style={C({padding:'14px 16px',textAlign:'center',border:`1px solid ${ch.color}25`,background:`${ch.color}06`})}>
+            <div style={{width:40,height:40,borderRadius:10,background:`${ch.color}18`,display:'flex',alignItems:'center',justifyContent:'center',margin:'0 auto 8px'}}>
+              <ch.icon style={{width:18,height:18,color:ch.color}}/>
+            </div>
+            <div style={{fontSize:13,fontWeight:700,color:'#0f172a'}}>{ch.label}</div>
+            <div style={{fontSize:14,fontWeight:800,color:ch.color,margin:'4px 0'}}>{ch.cost}</div>
+            <div style={{fontSize:10,color:'#94a3b8'}}>{ch.info}</div>
+            {ch.free && <div style={{marginTop:6,fontSize:9,fontWeight:700,color:'#34d399',background:'#dcfce7',padding:'2px 8px',borderRadius:999,display:'inline-block'}}>NO COST</div>}
+          </div>
+        ))}
+      </div>
+      {/* Notice Board */}
+      <div style={C({padding:0,overflow:'hidden'})}>
+        <div style={{padding:'10px 14px',borderBottom:'1px solid #f1f5f9',fontSize:13,fontWeight:700,color:'#0f172a'}}>Recent Messages Sent</div>
+        <div style={{overflowX:'auto'}}>
+          <table style={{width:'100%',borderCollapse:'collapse'}}>
+            <thead><tr>{['Recipients','Subject','Channel','Reach','Status','Date'].map(h=><th key={h} style={TH}>{h}</th>)}</tr></thead>
+            <tbody>
+              {msgs.map((m,i)=>{
+                const cc=m.channel==='WhatsApp'?'#34d399':m.channel==='SMS'?'#60a5fa':m.channel==='Email'?'#f472b6':'#818cf8';
+                return(<tr key={i} className="srv-tr" style={{background:i%2===0?'transparent':'#fafbff'}}>
+                  <td style={TD({fontWeight:600,color:'#0f172a'})}>{m.to}</td>
+                  <td style={TD()}>{m.subject}</td>
+                  <td style={TD()}><Bdg c={cc}>{m.channel}</Bdg></td>
+                  <td style={TD({fontWeight:700,color:'#0f172a'})}>{m.count}</td>
+                  <td style={TD()}><Bdg c="#34d399">{m.status}</Bdg></td>
+                  <td style={TD({color:'#94a3b8'})}>{m.date}</td>
+                </tr>);
+              })}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {/* Homework */}
+      <div style={C({padding:0,overflow:'hidden'})}>
+        <div style={{padding:'10px 14px',borderBottom:'1px solid #f1f5f9',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+          <span style={{fontSize:13,fontWeight:700,color:'#0f172a'}}>Homework Tracker</span>
+          <Bdg c="#fb923c">Parents notified via Mobile App instantly</Bdg>
+        </div>
+        <div style={{overflowX:'auto'}}>
+          <table style={{width:'100%',borderCollapse:'collapse'}}>
+            <thead><tr>{['Class','Subject','Title','Due Date','Status'].map(h=><th key={h} style={TH}>{h}</th>)}</tr></thead>
+            <tbody>
+              {hw.map((h,i)=>(
+                <tr key={i} className="srv-tr" style={{background:i%2===0?'transparent':'#fafbff'}}>
+                  <td style={TD()}><Bdg c="#60a5fa">{h.class}</Bdg></td>
+                  <td style={TD({color:'#475569'})}>{h.subject}</td>
+                  <td style={TD({fontWeight:600,color:'#0f172a'})}>{h.title}</td>
+                  <td style={TD({color:'#94a3b8',fontFamily:'monospace'})}>{h.due}</td>
+                  <td style={TD()}><Bdg c={h.c}>{h.status}</Bdg></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ══════════════════ EXPENSES & BUDGET ═══════════════════════ */
+const ExpensesBudget = () => {
+  const expenses=[
+    {category:'Events & Functions',vendor:'Star Caterers',    method:'UPI',        amount:'₹45,000',status:'Approved', date:'Jun 12',c:'#818cf8'},
+    {category:'Books & Library',   vendor:'Oxford Supplies',  method:'Bank Transfer',amount:'₹18,500',status:'Approved', date:'Jun 10',c:'#60a5fa'},
+    {category:'Software License',  vendor:'EdTech Solutions', method:'Online',      amount:'₹12,000',status:'Pending',  date:'Jun 13',c:'#fbbf24'},
+    {category:'Maintenance',       vendor:'ABC Repairs',      method:'Cash',        amount:'₹8,200',status:'Approved', date:'Jun 9', c:'#34d399'},
+    {category:'Sports Equipment',  vendor:'Decathlon',        method:'Cheque',      amount:'₹22,000',status:'Pending',  date:'Jun 11',c:'#fbbf24'},
+    {category:'Stationery',        vendor:'Paper World',      method:'Cash',        amount:'₹3,500',status:'Rejected', date:'Jun 8', c:'#f87171'},
+  ];
+  const budgets=[
+    {cat:'Events & Functions',budget:150000,spent:98000,c:'#818cf8'},
+    {cat:'Books & Library',   budget:80000, spent:62000,c:'#60a5fa'},
+    {cat:'Software',          budget:50000, spent:48000,c:'#f87171'},
+    {cat:'Maintenance',       budget:60000, spent:28000,c:'#34d399'},
+    {cat:'Sports',            budget:70000, spent:42000,c:'#fbbf24'},
+    {cat:'Stationery',        budget:20000, spent:8500, c:'#fb923c'},
+  ];
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:12}}>
+      <SH title="Expenses & Budget" sub="Category-wise expenses, vendor management & budget tracking" color="#f87171" icon={Receipt}/>
+      <div className="g4">
+        {[{icon:Receipt,label:'Total Expenses',value:154,suffix:'K',sub:'This month (₹)',grad:['#f43f5e','#f87171']},{icon:CheckCircle2,label:'Approved',value:98,suffix:'K',sub:'4 transactions',grad:['#10b981','#34d399']},{icon:Clock,label:'Pending Approval',value:34,suffix:'K',sub:'2 transactions',grad:['#f59e0b','#fbbf24']},{icon:BarChart2,label:'Budget Used',value:64,suffix:'%',sub:'₹3.8L of ₹6L total',grad:['#818cf8','#a78bfa']}].map(k=><KPI key={k.label} {...k}/>)}
+      </div>
+      {/* Budget progress */}
+      <div style={C({padding:'14px 16px'})}>
+        <div style={{fontSize:13,fontWeight:700,color:'#0f172a',marginBottom:10}}>Budget vs Actual (FY 2025–26)</div>
+        {budgets.map(b=>{
+          const pct=Math.round(b.spent/b.budget*100);
+          const over=pct>90;
+          return(
+            <div key={b.cat} style={{marginBottom:10}}>
+              <div style={{display:'flex',justifyContent:'space-between',marginBottom:4}}>
+                <span style={{fontSize:12,color:'#334155',fontWeight:500}}>{b.cat}</span>
+                <div style={{display:'flex',gap:8,alignItems:'center'}}>
+                  <span style={{fontSize:11,color:'#94a3b8'}}>₹{(b.spent/1000).toFixed(0)}K / ₹{(b.budget/1000).toFixed(0)}K</span>
+                  <span style={{fontSize:11,fontWeight:700,color:over?'#f87171':b.c}}>{pct}%</span>
+                  {over && <Bdg c="#f87171">Over Budget!</Bdg>}
+                </div>
+              </div>
+              <div style={{height:7,borderRadius:999,background:'#f1f5f9',overflow:'hidden'}}>
+                <div className="srv-bar" style={{height:'100%',borderRadius:999,width:`${Math.min(pct,100)}%`,background:over?'linear-gradient(90deg,#f43f5e,#f87171)':`linear-gradient(90deg,${b.c},${b.c}cc)`}}/>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+      {/* Expense table */}
+      <div style={C({padding:0,overflow:'hidden'})}>
+        <div style={{padding:'10px 14px',borderBottom:'1px solid #f1f5f9',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+          <span style={{fontSize:13,fontWeight:700,color:'#0f172a'}}>Recent Expenses</span>
+          <div style={{display:'flex',gap:5}}>{['Cash','UPI','Cheque','Bank Transfer'].map(m=><Bdg key={m} c="#94a3b8">{m}</Bdg>)}</div>
+        </div>
+        <div style={{overflowX:'auto'}}>
+          <table style={{width:'100%',borderCollapse:'collapse'}}>
+            <thead><tr>{['Category','Vendor','Method','Amount','Status','Date','Action'].map(h=><th key={h} style={TH}>{h}</th>)}</tr></thead>
+            <tbody>
+              {expenses.map((e,i)=>(
+                <tr key={i} className="srv-tr" style={{background:i%2===0?'transparent':'#fafbff'}}>
+                  <td style={TD()}><div style={{display:'flex',alignItems:'center',gap:6}}><div style={{width:7,height:7,borderRadius:'50%',background:e.c}}/><span style={{fontWeight:600,color:'#0f172a'}}>{e.category}</span></div></td>
+                  <td style={TD()}>{e.vendor}</td>
+                  <td style={TD()}><Bdg c="#94a3b8">{e.method}</Bdg></td>
+                  <td style={TD({fontFamily:'monospace',fontWeight:700,color:'#0f172a'})}>{e.amount}</td>
+                  <td style={TD()}><Bdg c={e.status==='Approved'?'#34d399':e.status==='Pending'?'#fbbf24':'#f87171'}>{e.status}</Bdg></td>
+                  <td style={TD({color:'#94a3b8'})}>{e.date}</td>
+                  <td style={TD()}>
+                    {e.status==='Pending' && <div style={{display:'flex',gap:5}}>
+                      <button style={{background:'#dcfce7',color:'#166534',border:'none',borderRadius:5,padding:'3px 9px',fontSize:10,fontWeight:700,cursor:'pointer'}}>✓ Approve</button>
+                      <button style={{background:'#fee2e2',color:'#991b1b',border:'none',borderRadius:5,padding:'3px 9px',fontSize:10,fontWeight:700,cursor:'pointer'}}>✗ Reject</button>
+                    </div>}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ══════════════════ HR & PAYROLL ════════════════════════════ */
+const HrPayroll = () => {
+  const salaries=[
+    {name:'Mr. R. Kumar',   desig:'HoD Mathematics', basic:45000,allow:8000,deduct:2200,net:50800,status:'Paid',  c:'#34d399'},
+    {name:'Mrs. P. Anitha', desig:'Science Teacher',  basic:38000,allow:6000,deduct:1900,net:42100,status:'Paid',  c:'#34d399'},
+    {name:'Mr. S. Venkat',  desig:'Languages HoD',    basic:42000,allow:7000,deduct:2100,net:46900,status:'Pending',c:'#fbbf24'},
+    {name:'Mrs. K. Meena',  desig:'Social Science',   basic:36000,allow:5500,deduct:1800,net:39700,status:'Paid',  c:'#34d399'},
+    {name:'Mr. C. Gopal',   desig:'Admin Manager',    basic:52000,allow:9000,deduct:2600,net:58400,status:'Pending',c:'#fbbf24'},
+  ];
+  const tasks=[
+    {task:'Prepare June Timetable',    assigned:'Mr. A. Rajesh', due:'Jun 15',priority:'High',  status:'In Progress',c:'#fbbf24'},
+    {task:'Complete Student ID Cards', assigned:'Mrs. V. Lakshmi',due:'Jun 18',priority:'Medium',status:'Pending',   c:'#f87171'},
+    {task:'Library Stock Audit',       assigned:'Mr. B. Selvam', due:'Jun 20',priority:'Low',   status:'Completed',  c:'#34d399'},
+    {task:'Upload Q1 Results',         assigned:'Mr. R. Kumar',  due:'Jun 22',priority:'High',  status:'Pending',    c:'#f87171'},
+    {task:'Parent Meeting Prep',       assigned:'Admin Team',    due:'Jun 21',priority:'High',  status:'In Progress',c:'#fbbf24'},
+  ];
+  const timetable=[
+    {period:'P1 8:30',class:'X-A',subject:'Mathematics',teacher:'Mr. R. Kumar'},
+    {period:'P2 9:20',class:'IX-B',subject:'Science',   teacher:'Mrs. P. Anitha'},
+    {period:'P3 10:10',class:'XI-A',subject:'Physics',  teacher:'Mr. A. Rajesh'},
+    {period:'P4 11:00',class:'VIII-C',subject:'English',teacher:'Mr. S. Venkat'},
+  ];
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:12}}>
+      <SH title="HR & Payroll" sub="Salary structures, allowances, deductions, tasks & timetable" color="#34d399" icon={Briefcase}/>
+      <div className="g4">
+        {[{icon:Users,label:'Total Staff',value:68,sub:'Teaching + Admin',grad:['#10b981','#34d399']},{icon:Wallet,label:'Monthly Payroll',value:28,suffix:'L',sub:'Total salary this month',grad:['#3b82f6','#60a5fa']},{icon:CheckCircle2,label:'Salaries Paid',value:54,sub:'Of 68 staff',grad:['#818cf8','#a78bfa']},{icon:ClipboardList,label:'Active Tasks',value:12,sub:'Assigned to staff',grad:['#f59e0b','#fbbf24']}].map(k=><KPI key={k.label} {...k}/>)}
+      </div>
+      {/* Salary table */}
+      <div style={C({padding:0,overflow:'hidden'})}>
+        <div style={{padding:'10px 14px',borderBottom:'1px solid #f1f5f9',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+          <span style={{fontSize:13,fontWeight:700,color:'#0f172a'}}>Salary Slip — June 2025</span>
+          <Bdg c="#34d399">Auto-deduction: Late coming + Holidays</Bdg>
+        </div>
+        <div style={{overflowX:'auto'}}>
+          <table style={{width:'100%',borderCollapse:'collapse'}}>
+            <thead><tr>{['Employee','Designation','Basic','Allowance','Deduction','Net Salary','Status'].map(h=><th key={h} style={TH}>{h}</th>)}</tr></thead>
+            <tbody>
+              {salaries.map((s,i)=>(
+                <tr key={i} className="srv-tr" style={{background:i%2===0?'transparent':'#fafbff'}}>
+                  <td style={TD({fontWeight:700,color:'#0f172a'})}>{s.name}</td>
+                  <td style={TD()}>{s.desig}</td>
+                  <td style={TD({fontFamily:'monospace'})}>₹{s.basic.toLocaleString()}</td>
+                  <td style={TD({fontFamily:'monospace',color:'#34d399',fontWeight:600})}>+₹{s.allow.toLocaleString()}</td>
+                  <td style={TD({fontFamily:'monospace',color:'#f87171',fontWeight:600})}>-₹{s.deduct.toLocaleString()}</td>
+                  <td style={TD({fontFamily:'monospace',fontWeight:800,color:'#0f172a'})}>₹{s.net.toLocaleString()}</td>
+                  <td style={TD()}><Bdg c={s.c}>{s.status}</Bdg></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className="g2">
+        {/* Tasks */}
+        <div style={C({padding:0,overflow:'hidden'})}>
+          <div style={{padding:'10px 14px',borderBottom:'1px solid #f1f5f9',fontSize:13,fontWeight:700,color:'#0f172a'}}>Task Management</div>
+          <div style={{padding:'10px 14px'}}>
+            {tasks.map((t,i)=>(
+              <div key={i} style={{padding:'8px 10px',borderRadius:9,background:`${t.c}0a`,border:`1px solid ${t.c}18`,marginBottom:7}}>
+                <div style={{display:'flex',justifyContent:'space-between',alignItems:'flex-start',marginBottom:4}}>
+                  <span style={{fontSize:12,fontWeight:600,color:'#0f172a'}}>{t.task}</span>
+                  <Bdg c={t.c}>{t.status}</Bdg>
+                </div>
+                <div style={{display:'flex',gap:10}}>
+                  <span style={{fontSize:10,color:'#94a3b8'}}>👤 {t.assigned}</span>
+                  <span style={{fontSize:10,color:'#94a3b8'}}>📅 {t.due}</span>
+                  <Bdg c={t.priority==='High'?'#f87171':t.priority==='Medium'?'#fbbf24':'#34d399'}>{t.priority}</Bdg>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        {/* Timetable */}
+        <div style={C({padding:0,overflow:'hidden'})}>
+          <div style={{padding:'10px 14px',borderBottom:'1px solid #f1f5f9',display:'flex',justifyContent:'space-between',alignItems:'center'}}>
+            <span style={{fontSize:13,fontWeight:700,color:'#0f172a'}}>Today's Timetable</span>
+            <Bdg c="#818cf8">AI-Generated</Bdg>
+          </div>
+          <div style={{padding:'10px 14px'}}>
+            {timetable.map((t,i)=>(
+              <div key={i} style={{display:'flex',alignItems:'center',gap:10,padding:'8px 10px',borderRadius:9,background:'#fafbff',marginBottom:6}}>
+                <span style={{fontSize:10,fontFamily:'monospace',color:'#94a3b8',width:52,flexShrink:0}}>{t.period}</span>
+                <div style={{flex:1}}>
+                  <span style={{fontSize:12,fontWeight:600,color:'#0f172a'}}>{t.subject}</span>
+                  <span style={{fontSize:10,color:'#94a3b8',display:'block'}}>{t.teacher}</span>
+                </div>
+                <Bdg c="#60a5fa">{t.class}</Bdg>
+              </div>
+            ))}
+            <div style={{padding:'8px 10px',borderRadius:9,background:'#f0fdf4',border:'1px dashed #86efac',textAlign:'center'}}>
+              <span style={{fontSize:11,color:'#166534'}}>⚡ Substitute teacher assignment available</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+/* ══════════════════ PLATFORM FEATURES ═══════════════════════ */
+const PlatformFeatures = () => {
+  const modules = [
+    {icon:CalendarDays, name:'Holiday Calendar',    desc:'Events, vacations & push notifications to all',               color:'#fbbf24'},
+    {icon:UserCheck,    name:'Student Attendance',  desc:'Biometric / Manual / Mobile App — CSV & PDF export',          color:'#34d399'},
+    {icon:Users,        name:'Staff Attendance',    desc:'By designation — teacher, coordinator, finance, VP',          color:'#a78bfa'},
+    {icon:ClipboardList,name:'Timetable',           desc:'Manual or AI-generated, substitute teacher management',       color:'#60a5fa'},
+    {icon:Receipt,      name:'Expense Management',  desc:'Categories, vendors, approve/reject workflow, budget control', color:'#f87171'},
+    {icon:UserPlus,     name:'Admission Management',desc:'QR code, WhatsApp link, auto account creation',               color:'#818cf8'},
+    {icon:IdCard,       name:'Student ID Cards',    desc:'Design, print & export student ID cards anytime',             color:'#2dd4bf'},
+    {icon:MessageSquare,name:'Communication',       desc:'SMS, WhatsApp, Email & free In-App notifications',            color:'#f472b6'},
+    {icon:Bell,         name:'Notice Board',        desc:'Announcements to all — parents, students & staff',            color:'#fb923c'},
+    {icon:BookMarked,   name:'Homework Tracker',    desc:'Assign, track & notify parents via mobile app',              color:'#38bdf8'},
+    {icon:Video,        name:'Online Classes',       desc:'Integrated with Zoom & Microsoft Teams',                     color:'#818cf8'},
+    {icon:FileText,     name:'Exam & Results',       desc:'Date sheets, marks entry, publish to parent app',            color:'#f87171'},
+    {icon:DollarSign,   name:'Fees Management',     desc:'Partial pay, defaulter alerts, payment gateways, discounts', color:'#2dd4bf'},
+    {icon:Bus,          name:'Transport + GPS',      desc:'Routes, stops, live GPS tracking, driver mobile',             color:'#38bdf8'},
+    {icon:Package,      name:'Inventory Management',desc:'Uniform, books, accessories — stock & supplier management',   color:'#fb923c'},
+    {icon:BookOpen,     name:'Library Management',  desc:'Books catalog, issue/return, fines & overdue tracking',      color:'#fbbf24'},
+    {icon:Activity,     name:'Daily Activities',    desc:'Snacks, medicine, temperature, exercise logs for students',   color:'#34d399'},
+    {icon:Wallet,       name:'Day Book',            desc:'Daily balance sheet — income, expenses, fee receipts',       color:'#60a5fa'},
+    {icon:Briefcase,    name:'Salary Management',   desc:'Structures, allowances, deductions, late-coming penalty',    color:'#34d399'},
+    {icon:ClipboardList,name:'Task Management',     desc:'Assign & track tasks for any staff member',                  color:'#818cf8'},
+    {icon:Brain,        name:'AI Features',         desc:'AI timetable + AI homework help for students (safe)',        color:'#a78bfa'},
+    {icon:Fingerprint,  name:'Biometric Integration',desc:'Fingerprint & RFID card attendance for staff & students',   color:'#f472b6'},
+    {icon:MapPin,       name:'Visitor Management',  desc:'Visitor details, purpose tracking & printed pass generation',color:'#fbbf24'},
+    {icon:Video,        name:'Learning Management', desc:'Quizzes, certificates, lesson plans & daily class logs',     color:'#2dd4bf'},
+    {icon:QrCode,       name:'Document Templates',  desc:'TC, Bonafide, Admit Card, Fee Invoice — auto generated',    color:'#fb923c'},
+    {icon:BarChart2,    name:'Reports & Analytics', desc:'Attendance, fee, expense & salary reports — export CSV/PDF', color:'#60a5fa'},
+  ];
+  const integrations=[
+    {icon:Smartphone,  name:'Mobile App',        desc:'Parents, Students & Teachers',color:'#34d399'},
+    {icon:Wifi,        name:'GPS Live Tracking', desc:'Real-time bus location',       color:'#38bdf8'},
+    {icon:Fingerprint, name:'Biometric Device',  desc:'Fingerprint & RFID card',     color:'#f472b6'},
+    {icon:Brain,       name:'AI Engine',         desc:'Timetable + Student help',     color:'#818cf8'},
+    {icon:CreditCard,  name:'Payment Gateway',   desc:'Online fee collection',        color:'#2dd4bf'},
+    {icon:MessageSquare,name:'WhatsApp API',     desc:'Business messaging',           color:'#34d399'},
+  ];
+  return (
+    <div style={{display:'flex',flexDirection:'column',gap:12}}>
+      <SH title="Platform Features" sub="Complete School ERP — 26 modules from the video demo" color="#fbbf24" icon={Layers}/>
+      {/* Pricing banner */}
+      <div style={{background:'linear-gradient(135deg,#1e1b4b,#312e81)',borderRadius:16,padding:'20px 24px',color:'white',position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',top:-30,right:-30,width:150,height:150,borderRadius:'50%',background:'rgba(129,140,248,0.15)'}}/>
+        <div style={{position:'absolute',bottom:-20,left:100,width:100,height:100,borderRadius:'50%',background:'rgba(251,191,36,0.1)'}}/>
+        <div style={{position:'relative',display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:14}}>
+          <div>
+            <div style={{fontSize:11,color:'rgba(255,255,255,0.6)',textTransform:'uppercase',letterSpacing:'0.08em',marginBottom:4}}>Simple Transparent Pricing</div>
+            <div style={{display:'flex',alignItems:'baseline',gap:6,marginBottom:6}}>
+              <span style={{fontSize:36,fontWeight:900,color:'#fbbf24'}}>₹10</span>
+              <span style={{fontSize:14,color:'rgba(255,255,255,0.7)'}}>/student/month</span>
+            </div>
+            <div style={{fontSize:12,color:'rgba(255,255,255,0.6)'}}>200 students = ₹2,000/month · No setup fee · No hidden charges</div>
+          </div>
+          <div style={{display:'flex',flexDirection:'column',gap:8}}>
+            {['✓  All 26 modules included','✓  Mobile apps for all users','✓  No setup or customisation cost','✓  Data security + SLA + NDA','✓  Annual plan → 3 months FREE'].map(t=>(
+              <div key={t} style={{fontSize:12,color:'rgba(255,255,255,0.85)',display:'flex',alignItems:'center',gap:6}}>{t}</div>
+            ))}
+          </div>
+        </div>
+      </div>
+      {/* All 26 modules grid */}
+      <div style={C({padding:'14px 16px'})}>
+        <div style={{fontSize:13,fontWeight:700,color:'#0f172a',marginBottom:12}}>All 26 Modules — Included in Base Price</div>
+        <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fill,minmax(200px,1fr))',gap:8}}>
+          {modules.map((m,i)=>(
+            <div key={i} style={{display:'flex',alignItems:'flex-start',gap:9,padding:'9px 11px',borderRadius:10,background:`${m.color}0a`,border:`1px solid ${m.color}18`}}>
+              <div style={{width:30,height:30,borderRadius:8,background:`${m.color}18`,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+                <m.icon style={{width:14,height:14,color:m.color}}/>
+              </div>
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{fontSize:11,fontWeight:700,color:'#0f172a',marginBottom:2}}>{m.name}</div>
+                <div style={{fontSize:9,color:'#94a3b8',lineHeight:1.4}}>{m.desc}</div>
+              </div>
+              <CheckCircle2 size={12} color="#34d399" style={{flexShrink:0,marginTop:2}}/>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Integrations */}
+      <div style={C({padding:'14px 16px'})}>
+        <div style={{fontSize:13,fontWeight:700,color:'#0f172a',marginBottom:10}}>Key Integrations & Hardware</div>
+        <div className="g3">
+          {integrations.map(ig=>(
+            <div key={ig.name} style={{display:'flex',alignItems:'center',gap:10,padding:'10px 12px',borderRadius:10,background:`${ig.color}0a`,border:`1px solid ${ig.color}20`}}>
+              <div style={{width:34,height:34,borderRadius:9,background:`${ig.color}18`,display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+                <ig.icon style={{width:16,height:16,color:ig.color}}/>
+              </div>
+              <div><div style={{fontSize:12,fontWeight:700,color:'#0f172a'}}>{ig.name}</div><div style={{fontSize:10,color:'#94a3b8'}}>{ig.desc}</div></div>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Cloud & Security */}
+      <div className="g3">
+        {[
+          {icon:Shield,    title:'Data Security',    points:['Cloud-based secure storage','SLA agreement provided','NDA agreement available','Your data stays private'],color:'#34d399'},
+          {icon:Smartphone,title:'Mobile App Access',points:['Parent portal — attendance, fees, results','Student portal — homework, AI help, results','Teacher app — attendance, homework, grades','Admin app — full control'],color:'#60a5fa'},
+          {icon:Brain,     title:'AI Capabilities',  points:['AI timetable generation','AI homework helper for students','Study tips & course assistance','Restricted to academics only'],color:'#a78bfa'},
+        ].map(card=>(
+          <div key={card.title} style={C({padding:'14px 16px',border:`1px solid ${card.color}25`,background:`${card.color}06`})}>
+            <div style={{display:'flex',alignItems:'center',gap:8,marginBottom:10}}>
+              <div style={{width:32,height:32,borderRadius:8,background:`${card.color}18`,display:'flex',alignItems:'center',justifyContent:'center'}}>
+                <card.icon style={{width:15,height:15,color:card.color}}/>
+              </div>
+              <span style={{fontSize:13,fontWeight:700,color:'#0f172a'}}>{card.title}</span>
+            </div>
+            {card.points.map((p,i)=>(
+              <div key={i} style={{display:'flex',gap:7,marginBottom:6}}>
+                <div style={{width:5,height:5,borderRadius:'50%',background:card.color,marginTop:4,flexShrink:0}}/>
+                <span style={{fontSize:11,color:'#475569'}}>{p}</span>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 /* ══════════════════ MAIN DASHBOARD ══════════════════════════ */
 export default function Dashboard() {
   const {logout} = useAuth();
@@ -769,7 +1254,12 @@ export default function Dashboard() {
       case 'staff': return <Staff/>;
       case 'library': return <Library/>;
       case 'transport': return <Transport/>;
-      case 'exams': return <Exams/>;
+      case 'exams':         return <Exams/>;
+      case 'admission':     return <Admission/>;
+      case 'communication': return <Communication/>;
+      case 'expenses':      return <ExpensesBudget/>;
+      case 'hrpayroll':     return <HrPayroll/>;
+      case 'platform':      return <PlatformFeatures/>;
       default: return <Overview/>;
     }
   };
